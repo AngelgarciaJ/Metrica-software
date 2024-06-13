@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage[backend=biber,style=alphabetic,citestyle=authoryear]{biblatex}
+\addbibresource{referencias.bib}
+
+\geometry{a4paper, margin=1in}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Garcia J. Angel R.}
+\fancyhead[R]{Curso de Ingeniería de Software I}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\title{Consumo de Recursos}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Concepto}
+El consumo de recursos en el contexto del desarrollo de software se refiere a la cantidad de recursos del sistema (como CPU, memoria, disco y red) que un programa utiliza mientras se ejecuta. Esta métrica es crucial para evaluar el rendimiento y la eficiencia del software. \cite{doe2018resource}
+
+\subsection{Historia}
+El interés en medir el consumo de recursos se remonta a los primeros días de la informática, cuando los recursos eran limitados y costosos. A medida que la tecnología avanzaba, la capacidad de medir y optimizar el uso de recursos se convirtió en una parte integral del desarrollo de software. \cite{fairley2014measuring}.
+
+\subsection{Objetivos del Proceso de Medición}
+\begin{itemize}
+    \item Evaluar la eficiencia del software en términos de uso de recursos.
+    \item Identificar cuellos de botella en el rendimiento.
+    \item Optimizar el software para mejorar su desempeño.
+\end{itemize}
+
+\section{Ventajas y Desventajas}
+
+\subsection{Ventajas}
+\begin{itemize}
+    \item Permite identificar y corregir cuellos de botella en el rendimiento.
+    \item Ayuda a optimizar el uso de recursos, reduciendo costos operativos.
+    \item Mejora la experiencia del usuario final al proporcionar un software más eficiente.
+\end{itemize}
+
+\subsection{Desventajas}
+\begin{itemize}
+    \item La medición y el análisis pueden ser complejos y consumir tiempo.
+    \item Requiere herramientas y técnicas especializadas.
+    \item No siempre es posible optimizar todos los aspectos del consumo de recursos sin comprometer otras áreas del rendimiento \cite{jones2008applied}.
+\end{itemize}
+
+
+\section{Limitaciones}
+A pesar de sus beneficios, la medición del consumo de recursos tiene algunas limitaciones inherentes. Por ejemplo, el consumo de recursos puede variar significativamente en diferentes entornos y configuraciones de hardware. Además, optimizar el uso de un tipo de recurso puede aumentar el consumo de otro, creando un balance delicado que debe ser manejado cuidadosamente.
+
+\pagebreak
+\section{Ejemplo}
+Consideremos un sistema de gestión de bases de datos que necesita ser evaluado por su consumo de recursos. El objetivo es medir el uso de CPU y memoria durante una operación de consulta intensiva.
+
+\subsection{Descripción del Sistema}
+El sistema realiza consultas complejas sobre una base de datos de gran tamaño. Las métricas a medir incluyen el tiempo de CPU utilizado y la cantidad de memoria consumida durante la ejecución de estas consultas.
+
+% calculo que se hace
+\subsection{Cálculo del Consumo de Recursos}
+Para medir el consumo de recursos durante las operaciones de consulta, se utilizaron herramientas de monitoreo del sistema que registran el uso de CPU y memoria en tiempo real. A continuación, se describe el procedimiento utilizado:
+
+\begin{enumerate}
+    \item \textbf{Configuración del Entorno}: El sistema de gestión de bases de datos fue configurado en un servidor con especificaciones conocidas (e.g., CPU de 4 núcleos, 16 GB de RAM).
+    \item \textbf{Ejecución de Consultas}: Se ejecutaron las consultas de prueba de manera secuencial, asegurándose de que el sistema estuviera en un estado estable antes de cada ejecución.
+    \item \textbf{Monitoreo del Sistema}: Durante la ejecución de cada consulta, se utilizó una herramienta de monitoreo (como \textit{top} en Linux o \textit{Performance Monitor} en Windows) para registrar el uso de CPU y memoria.
+    \item \textbf{Registro de Datos}: Los valores de consumo de CPU (en segundos) y memoria (en MB) fueron registrados para cada consulta.
+\end{enumerate}
+
+Los resultados obtenidos fueron los siguientes:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Operación & CPU (segundos) & Memoria (MB) \\
+        \hline
+        Consulta 1 & 3.5 & 150 \\
+        Consulta 2 & 4.0 & 170 \\
+        Consulta 3 & 3.8 & 160 \\
+        \hline
+    \end{tabular}
+    \caption{Consumo de Recursos durante Operaciones de Consulta}
+\end{table}
+
+Estos valores reflejan el tiempo total de CPU utilizado y la cantidad máxima de memoria ocupada durante la ejecución de cada consulta. El monitoreo continuo y la recolección precisa de datos aseguraron la fiabilidad de estos resultados.
+
+
+\subsection{Resultados de la Medición}
+A continuación, se presentan los resultados de la medición del consumo de recursos:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Operación & CPU (segundos) & Memoria (MB) \\
+        \hline
+        Consulta 1 & 3.5 & 150 \\
+        Consulta 2 & 4.0 & 170 \\
+        Consulta 3 & 3.8 & 160 \\
+        \hline
+    \end{tabular}
+    \caption{Consumo de Recursos durante Operaciones de Consulta}
+\end{table}
+
+
+
+
+
+\printbibliography
+
+\end{document}

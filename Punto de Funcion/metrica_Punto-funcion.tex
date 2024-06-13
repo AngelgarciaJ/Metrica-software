@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+
+\geometry{a4paper, margin=1in}
+% para los
+\usepackage[backend=biber,style=alphabetic,citestyle=authoryear]{biblatex}
+\addbibresource{referencias.bib}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Garcia J. Angel R.}
+\fancyhead[R]{Curso de Ingeniería de Software I}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\title{Punto de Función}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Concepto}
+El análisis de puntos de función (Function Point Analysis, FPA) es una técnica de medición del tamaño funcional del software desde el punto de vista del cliente. Este análisis no considera ningún aspecto de implementación de la solución.\cite{jones1996function} Es un método estándar ISO/IEC 20926 de medición de software que cuantifica los requisitos funcionales del usuario.\cite{pressman2005software}
+
+
+Antes de la existencia del FPA, la métrica de comparación entre proyectos de software eran las líneas de código, una métrica demasiado técnica que el usuario no podía entender. Otra métrica utilizada era la cantidad de pantallas, informes o archivos que entregaba el software. El FPA toma esto y mide la función, no la cantidad de pantallas por esa función.\cite{wiki}
+
+\subsection{Objetivos del Proceso de Medición}
+\begin{itemize}
+    \item Ser una medida consistente: dos profesionales analizando un mismo proyecto deben llegar al mismo resultado.
+    \item Ser simple para minimizar el esfuerzo de la medición.
+\end{itemize}
+
+\subsection{¿Cómo Realizar la Medición?}
+El análisis divide la especificación funcional en:
+\begin{itemize}
+    \item Interacción
+    \item Almacenamiento
+    \item Componentes funcionales básicos
+\end{itemize}
+
+\subsubsection{Componentes Funcionales Básicos}
+\begin{itemize}
+    \item \textbf{Interacción - Función de transacción:}
+    \begin{itemize}
+        \item Entrada externa (EI - External input): Pantallas donde el usuario ingresa datos.
+        \item Salida externa (EO - External output): Informes, gráficos, listados de datos.
+        \item Consulta externa (EQ - External query): Recuperar y mostrar datos al usuario.
+    \end{itemize}
+    \item \textbf{Almacenamiento - Función de datos:}
+    \begin{itemize}
+        \item Archivo lógico interno (ILF - Internal Logical File): Archivos desde el punto de vista lógico, pueden ser tablas en la base de datos.
+        \item Archivo de interfaz externo (EIF - External Interface File): Datos referenciados a otros sistemas, mantenidos por otros sistemas pero usados por el sistema actual.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Ejemplo}
+Se definen funciones según su tipo y su complejidad:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Tipo / Complejidad & Baja & Media & Alta \\
+        \hline
+        (EI) Entrada externa & 3 PF & 4 PF & 6 PF \\
+        (EO) Salida externa & 4 PF & 5 PF & 7 PF \\
+        (EQ) Consulta externa & 3 PF & 4 PF & 6 PF \\
+        (ILF) Archivo lógico interno & 7 PF & 10 PF & 15 PF \\
+        (EIF) Archivo de interfaz externo & 5 PF & 7 PF & 10 PF \\
+        \hline
+    \end{tabular}
+    \caption{Valores estándar (IFPUG) International Function Point Users Group}
+\end{table}
+
+Para el siguiente ejemplo se considerará que todas las funciones identificadas serán de complejidad media. El sistema requerido es:
+
+\begin{itemize}
+    \item \textbf{El sistema requerido es:}
+
+    \begin{itemize}
+    
+        \item Registro de Equipos de fútbol
+        \item Registros de partidos
+        \item Buscar partido por fecha
+        \item Actualización de datos del equipo
+        \item Eliminar equipos
+        \item Listado de equipos
+        \item 1 reporte de los equipos registrados por rango de fechas
+        \item 1 reporte de partidos
+    \end{itemize}
+\end{itemize}
+
+\subsection{Asigancion de PF por funcionaliad}
+
+
+\begin{itemize}
+    \item Registro de Equipos de fútbol (EI 4 PF)
+    \item Registros de partidos (EI 4 PF)
+    \item Buscar partido por fecha (EQ 4 PF)
+    \item Actualización de datos del equipo (EI 4 PF)
+    \item Eliminar equipos (EI 4 PF)
+    \item Listado de equipos (EO 5 PF)
+    \item 1 reporte de los equipos registrados por rango de fechas (EO 5 PF)
+    \item 1 reporte de partidos (EO 5 PF)
+    \item 4 tablas en BD (ILF 40 PF)
+\end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Función & Puntos de Función (PF) \\
+        \hline
+        Registro de Equipos de fútbol (EI) & 4 PF \\
+        Registros de partidos (EI) & 4 PF \\
+        Buscar partido por fecha (EQ) & 4 PF \\
+        Actualización de datos del equipo (EI) & 4 PF \\
+        Eliminar equipos (EI) & 4 PF \\
+        Listado de equipos (EO) & 5 PF \\
+        1 reporte de los equipos registrados por rango de fechas (EO) & 5 PF \\
+        1 reporte de partidos (EO) & 5 PF \\
+        4 Tablas en BD (ILF) & 40 PF \\
+        \hline
+        Puntos de función sin ajustar (PFSA) & 75 \\
+        \hline
+    \end{tabular}
+    \caption{Cálculo de Puntos de Función}
+\end{table}
+
+\printbibliography
+
+\end{document}
